@@ -1,0 +1,348 @@
+<mxfile host="65bd71144e">
+    <diagram name="Page-1" id="yJUdSke_IEeEPKA5-SOB">
+        <mxGraphModel dx="1214" dy="983" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" background="#ffffff" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="eUgsYPfzA2RoiOCANeuj-9" value="FRONTEND" style="swimlane;whiteSpace=wrap;html=1;fillColor=#008a00;strokeColor=#005700;fontColor=#ffffff;" parent="1" vertex="1">
+                    <mxGeometry x="200" y="40" width="1920" height="1480" as="geometry"/>
+                </mxCell>
+                <mxCell id="eUgsYPfzA2RoiOCANeuj-29" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="eUgsYPfzA2RoiOCANeuj-9" source="eUgsYPfzA2RoiOCANeuj-16" target="eUgsYPfzA2RoiOCANeuj-19" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="eUgsYPfzA2RoiOCANeuj-16" value="Login" style="html=1;whiteSpace=wrap;container=1;recursiveResize=0;collapsible=0;fillColor=#d5e8d4;strokeColor=#82b366;" parent="eUgsYPfzA2RoiOCANeuj-9" vertex="1">
+                    <mxGeometry x="40" y="240" width="80" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="eUgsYPfzA2RoiOCANeuj-62" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="eUgsYPfzA2RoiOCANeuj-9" source="eUgsYPfzA2RoiOCANeuj-26" target="eUgsYPfzA2RoiOCANeuj-32" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="eUgsYPfzA2RoiOCANeuj-63" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="eUgsYPfzA2RoiOCANeuj-9" source="eUgsYPfzA2RoiOCANeuj-26" target="eUgsYPfzA2RoiOCANeuj-40" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="eUgsYPfzA2RoiOCANeuj-64" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="eUgsYPfzA2RoiOCANeuj-9" source="eUgsYPfzA2RoiOCANeuj-26" target="eUgsYPfzA2RoiOCANeuj-51" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="eUgsYPfzA2RoiOCANeuj-26" value="Plan Utilizator in funtie de caz" style="rhombus;whiteSpace=wrap;html=1;fillColor=#647687;fontColor=#ffffff;strokeColor=#314354;" parent="eUgsYPfzA2RoiOCANeuj-9" vertex="1">
+                    <mxGeometry x="1320" y="200" width="120" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="eUgsYPfzA2RoiOCANeuj-30" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="eUgsYPfzA2RoiOCANeuj-9" source="eUgsYPfzA2RoiOCANeuj-19" target="eUgsYPfzA2RoiOCANeuj-26" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="1115" y="580.0026315789473" as="sourcePoint"/>
+                        <mxPoint x="1375" y="779.95" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="eUgsYPfzA2RoiOCANeuj-19" value="BACKEND" style="swimlane;startSize=20;horizontal=1;containerType=tree;fillColor=#a20025;strokeColor=#6F0000;fontColor=#ffffff;gradientColor=none;swimlaneFillColor=none;" parent="eUgsYPfzA2RoiOCANeuj-9" vertex="1">
+                    <mxGeometry x="160" y="40" width="1120" height="440" as="geometry">
+                        <mxRectangle x="160" y="40" width="100" height="30" as="alternateBounds"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="eUgsYPfzA2RoiOCANeuj-27" style="edgeStyle=elbowEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;startArrow=none;endArrow=classic;endFill=1;" parent="eUgsYPfzA2RoiOCANeuj-19" source="eUgsYPfzA2RoiOCANeuj-21" target="10" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="150" y="270" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="eUgsYPfzA2RoiOCANeuj-21" value="Verifica Utilizator" style="whiteSpace=wrap;html=1;treeFolding=1;treeMoving=1;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;startArrow&quot;:&quot;none&quot;,&quot;endArrow&quot;:&quot;none&quot;};fillColor=#647687;strokeColor=#314354;fontColor=#ffffff;" parent="eUgsYPfzA2RoiOCANeuj-19" vertex="1">
+                    <mxGeometry x="40" y="120" width="80" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="10" value="Verificare tip utilizator" style="rhombus;whiteSpace=wrap;html=1;fillColor=#647687;fontColor=#ffffff;strokeColor=#314354;" parent="eUgsYPfzA2RoiOCANeuj-19" vertex="1">
+                    <mxGeometry x="160" y="80" width="120" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="11" value="Utilizator" style="swimlane;startSize=20;horizontal=1;containerType=tree;fillColor=#60a917;fontColor=#ffffff;strokeColor=#2D7600;" parent="eUgsYPfzA2RoiOCANeuj-19" vertex="1">
+                    <mxGeometry x="320" y="40" width="760" height="200" as="geometry"/>
+                </mxCell>
+                <mxCell id="12" style="edgeStyle=elbowEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;startArrow=none;endArrow=classic;endFill=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="11" source="13" target="18" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="150" y="200" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="13" value="Cauta utilizator" style="whiteSpace=wrap;html=1;treeFolding=1;treeMoving=1;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;startArrow&quot;:&quot;none&quot;,&quot;endArrow&quot;:&quot;none&quot;};fillColor=#647687;fontColor=#ffffff;strokeColor=#314354;" parent="11" vertex="1">
+                    <mxGeometry x="40" y="60" width="80" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="16" value="Conectare utilizator" style="whiteSpace=wrap;html=1;treeFolding=1;treeMoving=1;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;startArrow&quot;:&quot;none&quot;,&quot;endArrow&quot;:&quot;none&quot;};fillColor=#647687;fontColor=#ffffff;strokeColor=#314354;" parent="11" vertex="1">
+                    <mxGeometry x="400" y="60" width="80" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="21" style="edgeStyle=none;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="11" source="18" target="17" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="18" value="Verificare existenta utilizator" style="rhombus;whiteSpace=wrap;html=1;fillColor=#647687;fontColor=#ffffff;strokeColor=#314354;" parent="11" vertex="1">
+                    <mxGeometry x="150" y="32.5" width="100" height="95" as="geometry"/>
+                </mxCell>
+                <mxCell id="22" style="edgeStyle=elbowEdgeStyle;html=1;startArrow=none;endArrow=classic;entryX=0;entryY=0.5;entryDx=0;entryDy=0;endFill=1;" parent="11" source="17" target="16" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="17" value="Utilizator existent" style="whiteSpace=wrap;html=1;treeFolding=1;treeMoving=1;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;startArrow&quot;:&quot;none&quot;,&quot;endArrow&quot;:&quot;none&quot;};fillColor=#647687;fontColor=#ffffff;strokeColor=#314354;" parent="11" vertex="1">
+                    <mxGeometry x="280" y="60" width="80" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="28" style="edgeStyle=elbowEdgeStyle;html=1;startArrow=none;endArrow=classic;entryX=0;entryY=0.5;entryDx=0;entryDy=0;endFill=1;" parent="11" source="25" target="27" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="25" value="Creare cont" style="whiteSpace=wrap;html=1;treeFolding=1;treeMoving=1;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;startArrow&quot;:&quot;none&quot;,&quot;endArrow&quot;:&quot;none&quot;};fillColor=#647687;fontColor=#ffffff;strokeColor=#314354;" parent="11" vertex="1">
+                    <mxGeometry x="400" y="140" width="80" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="29" style="edgeStyle=elbowEdgeStyle;html=1;startArrow=none;endArrow=classic;entryX=0;entryY=0.5;entryDx=0;entryDy=0;endFill=1;" parent="11" source="26" target="25" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="26" value="Utilizatorul nu exista" style="whiteSpace=wrap;html=1;treeFolding=1;treeMoving=1;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;startArrow&quot;:&quot;none&quot;,&quot;endArrow&quot;:&quot;none&quot;};fillColor=#647687;fontColor=#ffffff;strokeColor=#314354;" parent="11" vertex="1">
+                    <mxGeometry x="280" y="140" width="80" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="27" value="Conectare utilizator" style="whiteSpace=wrap;html=1;treeFolding=1;treeMoving=1;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;startArrow&quot;:&quot;none&quot;,&quot;endArrow&quot;:&quot;none&quot;};fillColor=#647687;fontColor=#ffffff;strokeColor=#314354;" parent="11" vertex="1">
+                    <mxGeometry x="520" y="140" width="80" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="32" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="11" source="18" target="26" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="240" y="310.00263157894733" as="sourcePoint"/>
+                        <mxPoint x="500" y="509.95000000000005" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="260" y="80"/>
+                            <mxPoint x="260" y="160"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="89" value="Verificare plan utilizator" style="whiteSpace=wrap;html=1;treeFolding=1;treeMoving=1;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;startArrow&quot;:&quot;none&quot;,&quot;endArrow&quot;:&quot;none&quot;};fillColor=#647687;fontColor=#ffffff;strokeColor=#314354;" parent="11" vertex="1">
+                    <mxGeometry x="520" y="60" width="80" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="15" style="edgeStyle=elbowEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;startArrow=none;endArrow=classic;entryX=0;entryY=0.5;entryDx=0;entryDy=0;endFill=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="11" source="16" target="89" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="90" value="Verificare plan utilizator" style="whiteSpace=wrap;html=1;treeFolding=1;treeMoving=1;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;startArrow&quot;:&quot;none&quot;,&quot;endArrow&quot;:&quot;none&quot;};fillColor=#647687;fontColor=#ffffff;strokeColor=#314354;" parent="11" vertex="1">
+                    <mxGeometry x="640" y="140" width="80" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="30" style="edgeStyle=elbowEdgeStyle;html=1;startArrow=none;endArrow=classic;entryX=0;entryY=0.5;entryDx=0;entryDy=0;endFill=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="11" source="27" target="90" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="34" value="Administrator" style="swimlane;startSize=20;horizontal=1;containerType=tree;fillColor=#e51400;fontColor=#ffffff;strokeColor=#B20000;" parent="eUgsYPfzA2RoiOCANeuj-19" vertex="1">
+                    <mxGeometry x="320" y="280" width="400" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="37" value="Acces complet" style="whiteSpace=wrap;html=1;treeFolding=1;treeMoving=1;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;startArrow&quot;:&quot;none&quot;,&quot;endArrow&quot;:&quot;none&quot;};fillColor=#647687;fontColor=#ffffff;strokeColor=#314354;" parent="34" vertex="1">
+                    <mxGeometry x="280" y="40" width="80" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="67" value="Conectare administrator" style="whiteSpace=wrap;html=1;treeFolding=1;treeMoving=1;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;startArrow&quot;:&quot;none&quot;,&quot;endArrow&quot;:&quot;none&quot;};fillColor=#647687;fontColor=#ffffff;strokeColor=#314354;" parent="34" vertex="1">
+                    <mxGeometry x="40" y="40" width="80" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="86" value="Conectare administrator" style="whiteSpace=wrap;html=1;treeFolding=1;treeMoving=1;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;startArrow&quot;:&quot;none&quot;,&quot;endArrow&quot;:&quot;none&quot;};fillColor=#647687;fontColor=#ffffff;strokeColor=#314354;" parent="34" vertex="1">
+                    <mxGeometry x="160" y="40" width="80" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="38" style="edgeStyle=elbowEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;startArrow=none;endArrow=classic;entryX=0;entryY=0.5;entryDx=0;entryDy=0;endFill=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="34" source="86" target="37" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="35" style="edgeStyle=elbowEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;startArrow=none;endArrow=classic;endFill=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="34" source="67" target="86" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="160" y="190" as="sourcePoint"/>
+                        <mxPoint x="260" y="180" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="40" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="eUgsYPfzA2RoiOCANeuj-19" source="10" target="34" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="220" y="470.00263157894733" as="sourcePoint"/>
+                        <mxPoint x="480" y="669.95" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="300" y="140"/>
+                            <mxPoint x="300" y="340"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="41" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="eUgsYPfzA2RoiOCANeuj-19" source="10" target="11" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="20" y="500.00263157894733" as="sourcePoint"/>
+                        <mxPoint x="280" y="699.95" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="eUgsYPfzA2RoiOCANeuj-32" value="ChatBox Starter (Free)" style="swimlane;startSize=20;horizontal=1;containerType=tree;fillColor=#647687;fontColor=#ffffff;strokeColor=#314354;" parent="eUgsYPfzA2RoiOCANeuj-9" vertex="1">
+                    <mxGeometry x="1480" y="200" width="400" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="eUgsYPfzA2RoiOCANeuj-38" style="edgeStyle=elbowEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;startArrow=none;endArrow=classic;entryX=0;entryY=0.5;entryDx=0;entryDy=0;endFill=1;" parent="eUgsYPfzA2RoiOCANeuj-32" source="eUgsYPfzA2RoiOCANeuj-34" target="eUgsYPfzA2RoiOCANeuj-37" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="eUgsYPfzA2RoiOCANeuj-34" value="5 mesaje cu GPT-oss pe zi" style="whiteSpace=wrap;html=1;treeFolding=1;treeMoving=1;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;startArrow&quot;:&quot;none&quot;,&quot;endArrow&quot;:&quot;none&quot;};fillColor=#647687;fontColor=#ffffff;strokeColor=#314354;" parent="eUgsYPfzA2RoiOCANeuj-32" vertex="1">
+                    <mxGeometry x="40" y="40" width="80" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="eUgsYPfzA2RoiOCANeuj-35" value="Nelimitate cu LLaMA 3.2" style="whiteSpace=wrap;html=1;treeFolding=1;treeMoving=1;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;startArrow&quot;:&quot;none&quot;,&quot;endArrow&quot;:&quot;none&quot;};fillColor=#647687;fontColor=#ffffff;strokeColor=#314354;" parent="eUgsYPfzA2RoiOCANeuj-32" vertex="1">
+                    <mxGeometry x="280" y="40" width="80" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="eUgsYPfzA2RoiOCANeuj-39" style="edgeStyle=elbowEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;startArrow=none;endArrow=classic;entryX=0;entryY=0.5;entryDx=0;entryDy=0;endFill=1;" parent="eUgsYPfzA2RoiOCANeuj-32" source="eUgsYPfzA2RoiOCANeuj-37" target="eUgsYPfzA2RoiOCANeuj-35" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="eUgsYPfzA2RoiOCANeuj-37" value="Fara mesaje ramase" style="whiteSpace=wrap;html=1;treeFolding=1;treeMoving=1;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;startArrow&quot;:&quot;none&quot;,&quot;endArrow&quot;:&quot;none&quot;};fillColor=#647687;fontColor=#ffffff;strokeColor=#314354;" parent="eUgsYPfzA2RoiOCANeuj-32" vertex="1">
+                    <mxGeometry x="160" y="40" width="80" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="eUgsYPfzA2RoiOCANeuj-40" value="ChatBox Pro  (100 euro)" style="swimlane;startSize=20;horizontal=1;containerType=tree;fillColor=#647687;fontColor=#ffffff;strokeColor=#314354;" parent="eUgsYPfzA2RoiOCANeuj-9" vertex="1">
+                    <mxGeometry x="1480" y="360" width="400" height="200" as="geometry"/>
+                </mxCell>
+                <mxCell id="eUgsYPfzA2RoiOCANeuj-41" style="edgeStyle=elbowEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;startArrow=none;endArrow=classic;entryX=0;entryY=0.5;entryDx=0;entryDy=0;endFill=1;" parent="eUgsYPfzA2RoiOCANeuj-40" source="eUgsYPfzA2RoiOCANeuj-42" target="eUgsYPfzA2RoiOCANeuj-45" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="eUgsYPfzA2RoiOCANeuj-42" value="100 mesaje cu GPT-oss pe zi" style="whiteSpace=wrap;html=1;treeFolding=1;treeMoving=1;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;startArrow&quot;:&quot;none&quot;,&quot;endArrow&quot;:&quot;none&quot;};fillColor=#647687;fontColor=#ffffff;strokeColor=#314354;" parent="eUgsYPfzA2RoiOCANeuj-40" vertex="1">
+                    <mxGeometry x="40" y="40" width="80" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="eUgsYPfzA2RoiOCANeuj-43" value="Nelimitate cu LLaMA 3.2" style="whiteSpace=wrap;html=1;treeFolding=1;treeMoving=1;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;startArrow&quot;:&quot;none&quot;,&quot;endArrow&quot;:&quot;none&quot;};fillColor=#647687;fontColor=#ffffff;strokeColor=#314354;" parent="eUgsYPfzA2RoiOCANeuj-40" vertex="1">
+                    <mxGeometry x="280" y="40" width="80" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="eUgsYPfzA2RoiOCANeuj-44" style="edgeStyle=elbowEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;startArrow=none;endArrow=classic;entryX=0;entryY=0.5;entryDx=0;entryDy=0;endFill=1;" parent="eUgsYPfzA2RoiOCANeuj-40" source="eUgsYPfzA2RoiOCANeuj-45" target="eUgsYPfzA2RoiOCANeuj-43" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="eUgsYPfzA2RoiOCANeuj-45" value="Fara mesaje ramase" style="whiteSpace=wrap;html=1;treeFolding=1;treeMoving=1;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;startArrow&quot;:&quot;none&quot;,&quot;endArrow&quot;:&quot;none&quot;};fillColor=#647687;fontColor=#ffffff;strokeColor=#314354;" parent="eUgsYPfzA2RoiOCANeuj-40" vertex="1">
+                    <mxGeometry x="160" y="40" width="80" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="eUgsYPfzA2RoiOCANeuj-49" style="edgeStyle=elbowEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;startArrow=none;endArrow=classic;entryX=0;entryY=0.5;entryDx=0;entryDy=0;endFill=1;" parent="eUgsYPfzA2RoiOCANeuj-40" source="eUgsYPfzA2RoiOCANeuj-46" target="eUgsYPfzA2RoiOCANeuj-48" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="eUgsYPfzA2RoiOCANeuj-46" value="50 Fisiere incarcate pe zi" style="whiteSpace=wrap;html=1;treeFolding=1;treeMoving=1;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;startArrow&quot;:&quot;none&quot;,&quot;endArrow&quot;:&quot;none&quot;};fillColor=#647687;fontColor=#ffffff;strokeColor=#314354;" parent="eUgsYPfzA2RoiOCANeuj-40" vertex="1">
+                    <mxGeometry x="40" y="120" width="80" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="eUgsYPfzA2RoiOCANeuj-47" value="Functie dejactivata" style="whiteSpace=wrap;html=1;treeFolding=1;treeMoving=1;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;startArrow&quot;:&quot;none&quot;,&quot;endArrow&quot;:&quot;none&quot;};fillColor=#647687;fontColor=#ffffff;strokeColor=#314354;" parent="eUgsYPfzA2RoiOCANeuj-40" vertex="1">
+                    <mxGeometry x="280" y="120" width="80" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="eUgsYPfzA2RoiOCANeuj-50" style="edgeStyle=elbowEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;startArrow=none;endArrow=classic;entryX=0;entryY=0.5;entryDx=0;entryDy=0;endFill=1;" parent="eUgsYPfzA2RoiOCANeuj-40" source="eUgsYPfzA2RoiOCANeuj-48" target="eUgsYPfzA2RoiOCANeuj-47" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="eUgsYPfzA2RoiOCANeuj-48" value="Fara fisiere ramase" style="whiteSpace=wrap;html=1;treeFolding=1;treeMoving=1;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;startArrow&quot;:&quot;none&quot;,&quot;endArrow&quot;:&quot;none&quot;};fillColor=#647687;fontColor=#ffffff;strokeColor=#314354;" parent="eUgsYPfzA2RoiOCANeuj-40" vertex="1">
+                    <mxGeometry x="160" y="120" width="80" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="eUgsYPfzA2RoiOCANeuj-51" value="ChatBox Unlimited (500 euro)" style="swimlane;startSize=20;horizontal=1;containerType=tree;fillColor=#647687;fontColor=#ffffff;strokeColor=#314354;" parent="eUgsYPfzA2RoiOCANeuj-9" vertex="1">
+                    <mxGeometry x="1480" y="600" width="280" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="eUgsYPfzA2RoiOCANeuj-53" value="Mesaje nelimitate cu GPT-oss" style="whiteSpace=wrap;html=1;treeFolding=1;treeMoving=1;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;startArrow&quot;:&quot;none&quot;,&quot;endArrow&quot;:&quot;none&quot;};fillColor=#647687;fontColor=#ffffff;strokeColor=#314354;" parent="eUgsYPfzA2RoiOCANeuj-51" vertex="1">
+                    <mxGeometry x="40" y="40" width="80" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="eUgsYPfzA2RoiOCANeuj-58" value="Fisiere incarcate nelimitate" style="whiteSpace=wrap;html=1;treeFolding=1;treeMoving=1;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;startArrow&quot;:&quot;none&quot;,&quot;endArrow&quot;:&quot;none&quot;};fillColor=#647687;fontColor=#ffffff;strokeColor=#314354;" parent="eUgsYPfzA2RoiOCANeuj-51" vertex="1">
+                    <mxGeometry x="160" y="40" width="80" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="eUgsYPfzA2RoiOCANeuj-65" value="ChatBox Basic (10 euro/lună)" style="swimlane;startSize=20;horizontal=1;containerType=tree;fillColor=#647687;fontColor=#ffffff;strokeColor=#314354;" parent="eUgsYPfzA2RoiOCANeuj-9" vertex="1">
+                    <mxGeometry x="1480" y="760" width="400" height="200" as="geometry"/>
+                </mxCell>
+                <mxCell id="eUgsYPfzA2RoiOCANeuj-66" style="edgeStyle=elbowEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;startArrow=none;endArrow=classic;entryX=0;entryY=0.5;entryDx=0;entryDy=0;endFill=1;" parent="eUgsYPfzA2RoiOCANeuj-65" source="eUgsYPfzA2RoiOCANeuj-67" target="eUgsYPfzA2RoiOCANeuj-70" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="eUgsYPfzA2RoiOCANeuj-67" value="10 mesaje cu GPT-oss pe zi" style="whiteSpace=wrap;html=1;treeFolding=1;treeMoving=1;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;startArrow&quot;:&quot;none&quot;,&quot;endArrow&quot;:&quot;none&quot;};fillColor=#647687;fontColor=#ffffff;strokeColor=#314354;" parent="eUgsYPfzA2RoiOCANeuj-65" vertex="1">
+                    <mxGeometry x="40" y="40" width="80" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="eUgsYPfzA2RoiOCANeuj-68" value="Nelimitate cu LLaMA 3.2" style="whiteSpace=wrap;html=1;treeFolding=1;treeMoving=1;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;startArrow&quot;:&quot;none&quot;,&quot;endArrow&quot;:&quot;none&quot;};fillColor=#647687;fontColor=#ffffff;strokeColor=#314354;" parent="eUgsYPfzA2RoiOCANeuj-65" vertex="1">
+                    <mxGeometry x="280" y="40" width="80" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="eUgsYPfzA2RoiOCANeuj-69" style="edgeStyle=elbowEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;startArrow=none;endArrow=classic;entryX=0;entryY=0.5;entryDx=0;entryDy=0;endFill=1;" parent="eUgsYPfzA2RoiOCANeuj-65" source="eUgsYPfzA2RoiOCANeuj-70" target="eUgsYPfzA2RoiOCANeuj-68" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="eUgsYPfzA2RoiOCANeuj-70" value="Fara mesaje ramase" style="whiteSpace=wrap;html=1;treeFolding=1;treeMoving=1;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;startArrow&quot;:&quot;none&quot;,&quot;endArrow&quot;:&quot;none&quot;};fillColor=#647687;fontColor=#ffffff;strokeColor=#314354;" parent="eUgsYPfzA2RoiOCANeuj-65" vertex="1">
+                    <mxGeometry x="160" y="40" width="80" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="eUgsYPfzA2RoiOCANeuj-71" style="edgeStyle=elbowEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;startArrow=none;endArrow=classic;entryX=0;entryY=0.5;entryDx=0;entryDy=0;endFill=1;" parent="eUgsYPfzA2RoiOCANeuj-65" source="eUgsYPfzA2RoiOCANeuj-72" target="eUgsYPfzA2RoiOCANeuj-75" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="eUgsYPfzA2RoiOCANeuj-72" value="5 Fisiere incarcate pe zi" style="whiteSpace=wrap;html=1;treeFolding=1;treeMoving=1;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;startArrow&quot;:&quot;none&quot;,&quot;endArrow&quot;:&quot;none&quot;};fillColor=#647687;fontColor=#ffffff;strokeColor=#314354;" parent="eUgsYPfzA2RoiOCANeuj-65" vertex="1">
+                    <mxGeometry x="40" y="120" width="80" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="eUgsYPfzA2RoiOCANeuj-73" value="Functie dejactivata" style="whiteSpace=wrap;html=1;treeFolding=1;treeMoving=1;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;startArrow&quot;:&quot;none&quot;,&quot;endArrow&quot;:&quot;none&quot;};fillColor=#647687;fontColor=#ffffff;strokeColor=#314354;" parent="eUgsYPfzA2RoiOCANeuj-65" vertex="1">
+                    <mxGeometry x="280" y="120" width="80" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="eUgsYPfzA2RoiOCANeuj-74" style="edgeStyle=elbowEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;startArrow=none;endArrow=classic;entryX=0;entryY=0.5;entryDx=0;entryDy=0;endFill=1;" parent="eUgsYPfzA2RoiOCANeuj-65" source="eUgsYPfzA2RoiOCANeuj-75" target="eUgsYPfzA2RoiOCANeuj-73" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="eUgsYPfzA2RoiOCANeuj-75" value="Fara fisiere ramase" style="whiteSpace=wrap;html=1;treeFolding=1;treeMoving=1;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;startArrow&quot;:&quot;none&quot;,&quot;endArrow&quot;:&quot;none&quot;};fillColor=#647687;fontColor=#ffffff;strokeColor=#314354;" parent="eUgsYPfzA2RoiOCANeuj-65" vertex="1">
+                    <mxGeometry x="160" y="120" width="80" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="eUgsYPfzA2RoiOCANeuj-76" value="ChatBox Advanced (25 euro/lună)" style="swimlane;startSize=20;horizontal=1;containerType=tree;fillColor=#647687;fontColor=#ffffff;strokeColor=#314354;" parent="eUgsYPfzA2RoiOCANeuj-9" vertex="1">
+                    <mxGeometry x="1480" y="1000" width="400" height="200" as="geometry"/>
+                </mxCell>
+                <mxCell id="eUgsYPfzA2RoiOCANeuj-77" style="edgeStyle=elbowEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;startArrow=none;endArrow=classic;entryX=0;entryY=0.5;entryDx=0;entryDy=0;endFill=1;" parent="eUgsYPfzA2RoiOCANeuj-76" source="eUgsYPfzA2RoiOCANeuj-78" target="eUgsYPfzA2RoiOCANeuj-81" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="eUgsYPfzA2RoiOCANeuj-78" value="50 mesaje cu GPT-oss pe zi" style="whiteSpace=wrap;html=1;treeFolding=1;treeMoving=1;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;startArrow&quot;:&quot;none&quot;,&quot;endArrow&quot;:&quot;none&quot;};fillColor=#647687;fontColor=#ffffff;strokeColor=#314354;" parent="eUgsYPfzA2RoiOCANeuj-76" vertex="1">
+                    <mxGeometry x="40" y="40" width="80" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="eUgsYPfzA2RoiOCANeuj-79" value="Nelimitate cu LLaMA 3.2" style="whiteSpace=wrap;html=1;treeFolding=1;treeMoving=1;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;startArrow&quot;:&quot;none&quot;,&quot;endArrow&quot;:&quot;none&quot;};fillColor=#647687;fontColor=#ffffff;strokeColor=#314354;" parent="eUgsYPfzA2RoiOCANeuj-76" vertex="1">
+                    <mxGeometry x="280" y="40" width="80" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="eUgsYPfzA2RoiOCANeuj-80" style="edgeStyle=elbowEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;startArrow=none;endArrow=classic;entryX=0;entryY=0.5;entryDx=0;entryDy=0;endFill=1;" parent="eUgsYPfzA2RoiOCANeuj-76" source="eUgsYPfzA2RoiOCANeuj-81" target="eUgsYPfzA2RoiOCANeuj-79" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="eUgsYPfzA2RoiOCANeuj-81" value="Fara mesaje ramase" style="whiteSpace=wrap;html=1;treeFolding=1;treeMoving=1;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;startArrow&quot;:&quot;none&quot;,&quot;endArrow&quot;:&quot;none&quot;};fillColor=#647687;fontColor=#ffffff;strokeColor=#314354;" parent="eUgsYPfzA2RoiOCANeuj-76" vertex="1">
+                    <mxGeometry x="160" y="40" width="80" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="eUgsYPfzA2RoiOCANeuj-82" style="edgeStyle=elbowEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;startArrow=none;endArrow=classic;entryX=0;entryY=0.5;entryDx=0;entryDy=0;endFill=1;" parent="eUgsYPfzA2RoiOCANeuj-76" source="eUgsYPfzA2RoiOCANeuj-83" target="eUgsYPfzA2RoiOCANeuj-86" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="eUgsYPfzA2RoiOCANeuj-83" value="10 Fisiere incarcate pe zi" style="whiteSpace=wrap;html=1;treeFolding=1;treeMoving=1;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;startArrow&quot;:&quot;none&quot;,&quot;endArrow&quot;:&quot;none&quot;};fillColor=#647687;fontColor=#ffffff;strokeColor=#314354;" parent="eUgsYPfzA2RoiOCANeuj-76" vertex="1">
+                    <mxGeometry x="40" y="120" width="80" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="eUgsYPfzA2RoiOCANeuj-84" value="Functie dejactivata" style="whiteSpace=wrap;html=1;treeFolding=1;treeMoving=1;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;startArrow&quot;:&quot;none&quot;,&quot;endArrow&quot;:&quot;none&quot;};fillColor=#647687;fontColor=#ffffff;strokeColor=#314354;" parent="eUgsYPfzA2RoiOCANeuj-76" vertex="1">
+                    <mxGeometry x="280" y="120" width="80" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="eUgsYPfzA2RoiOCANeuj-85" style="edgeStyle=elbowEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;startArrow=none;endArrow=classic;entryX=0;entryY=0.5;entryDx=0;entryDy=0;endFill=1;" parent="eUgsYPfzA2RoiOCANeuj-76" source="eUgsYPfzA2RoiOCANeuj-86" target="eUgsYPfzA2RoiOCANeuj-84" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="eUgsYPfzA2RoiOCANeuj-86" value="Fara fisiere ramase" style="whiteSpace=wrap;html=1;treeFolding=1;treeMoving=1;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;startArrow&quot;:&quot;none&quot;,&quot;endArrow&quot;:&quot;none&quot;};fillColor=#647687;fontColor=#ffffff;strokeColor=#314354;" parent="eUgsYPfzA2RoiOCANeuj-76" vertex="1">
+                    <mxGeometry x="160" y="120" width="80" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="eUgsYPfzA2RoiOCANeuj-87" value="ChatBox Extreme (50 euro/lună)" style="swimlane;startSize=20;horizontal=1;containerType=tree;fillColor=#647687;fontColor=#ffffff;strokeColor=#314354;" parent="eUgsYPfzA2RoiOCANeuj-9" vertex="1">
+                    <mxGeometry x="1480" y="1240" width="400" height="200" as="geometry"/>
+                </mxCell>
+                <mxCell id="eUgsYPfzA2RoiOCANeuj-88" style="edgeStyle=elbowEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;startArrow=none;endArrow=classic;entryX=0;entryY=0.5;entryDx=0;entryDy=0;endFill=1;" parent="eUgsYPfzA2RoiOCANeuj-87" source="eUgsYPfzA2RoiOCANeuj-89" target="eUgsYPfzA2RoiOCANeuj-92" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="eUgsYPfzA2RoiOCANeuj-89" value="120 mesaje cu GPT-oss pe zi" style="whiteSpace=wrap;html=1;treeFolding=1;treeMoving=1;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;startArrow&quot;:&quot;none&quot;,&quot;endArrow&quot;:&quot;none&quot;};fillColor=#647687;fontColor=#ffffff;strokeColor=#314354;" parent="eUgsYPfzA2RoiOCANeuj-87" vertex="1">
+                    <mxGeometry x="40" y="40" width="80" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="eUgsYPfzA2RoiOCANeuj-90" value="Nelimitate cu LLaMA 3.2" style="whiteSpace=wrap;html=1;treeFolding=1;treeMoving=1;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;startArrow&quot;:&quot;none&quot;,&quot;endArrow&quot;:&quot;none&quot;};fillColor=#647687;fontColor=#ffffff;strokeColor=#314354;" parent="eUgsYPfzA2RoiOCANeuj-87" vertex="1">
+                    <mxGeometry x="280" y="40" width="80" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="eUgsYPfzA2RoiOCANeuj-91" style="edgeStyle=elbowEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;startArrow=none;endArrow=classic;entryX=0;entryY=0.5;entryDx=0;entryDy=0;endFill=1;" parent="eUgsYPfzA2RoiOCANeuj-87" source="eUgsYPfzA2RoiOCANeuj-92" target="eUgsYPfzA2RoiOCANeuj-90" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="eUgsYPfzA2RoiOCANeuj-92" value="Fara mesaje ramase" style="whiteSpace=wrap;html=1;treeFolding=1;treeMoving=1;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;startArrow&quot;:&quot;none&quot;,&quot;endArrow&quot;:&quot;none&quot;};fillColor=#647687;fontColor=#ffffff;strokeColor=#314354;" parent="eUgsYPfzA2RoiOCANeuj-87" vertex="1">
+                    <mxGeometry x="160" y="40" width="80" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="eUgsYPfzA2RoiOCANeuj-93" style="edgeStyle=elbowEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;startArrow=none;endArrow=classic;entryX=0;entryY=0.5;entryDx=0;entryDy=0;endFill=1;" parent="eUgsYPfzA2RoiOCANeuj-87" source="eUgsYPfzA2RoiOCANeuj-94" target="eUgsYPfzA2RoiOCANeuj-97" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="eUgsYPfzA2RoiOCANeuj-94" value="15 Fisiere incarcate pe zi" style="whiteSpace=wrap;html=1;treeFolding=1;treeMoving=1;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;startArrow&quot;:&quot;none&quot;,&quot;endArrow&quot;:&quot;none&quot;};fillColor=#647687;fontColor=#ffffff;strokeColor=#314354;" parent="eUgsYPfzA2RoiOCANeuj-87" vertex="1">
+                    <mxGeometry x="40" y="120" width="80" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="eUgsYPfzA2RoiOCANeuj-95" value="Functie dejactivata" style="whiteSpace=wrap;html=1;treeFolding=1;treeMoving=1;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;startArrow&quot;:&quot;none&quot;,&quot;endArrow&quot;:&quot;none&quot;};fillColor=#647687;fontColor=#ffffff;strokeColor=#314354;" parent="eUgsYPfzA2RoiOCANeuj-87" vertex="1">
+                    <mxGeometry x="280" y="120" width="80" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="eUgsYPfzA2RoiOCANeuj-96" style="edgeStyle=elbowEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;startArrow=none;endArrow=classic;entryX=0;entryY=0.5;entryDx=0;entryDy=0;endFill=1;" parent="eUgsYPfzA2RoiOCANeuj-87" source="eUgsYPfzA2RoiOCANeuj-97" target="eUgsYPfzA2RoiOCANeuj-95" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="eUgsYPfzA2RoiOCANeuj-97" value="Fara fisiere ramase" style="whiteSpace=wrap;html=1;treeFolding=1;treeMoving=1;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;startArrow&quot;:&quot;none&quot;,&quot;endArrow&quot;:&quot;none&quot;};fillColor=#647687;fontColor=#ffffff;strokeColor=#314354;" parent="eUgsYPfzA2RoiOCANeuj-87" vertex="1">
+                    <mxGeometry x="160" y="120" width="80" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="eUgsYPfzA2RoiOCANeuj-9" source="eUgsYPfzA2RoiOCANeuj-26" target="eUgsYPfzA2RoiOCANeuj-65" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="1299.75" y="380" as="sourcePoint"/>
+                        <mxPoint x="1339.75" y="780" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="eUgsYPfzA2RoiOCANeuj-9" source="eUgsYPfzA2RoiOCANeuj-26" target="eUgsYPfzA2RoiOCANeuj-76" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="1270" y="370" as="sourcePoint"/>
+                        <mxPoint x="1310" y="970" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="eUgsYPfzA2RoiOCANeuj-9" source="eUgsYPfzA2RoiOCANeuj-26" target="eUgsYPfzA2RoiOCANeuj-87" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="1290" y="390" as="sourcePoint"/>
+                        <mxPoint x="1330" y="1230" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="45" value="Utilizator" style="swimlane;startSize=20;horizontal=1;containerType=tree;fillColor=#60a917;fontColor=#ffffff;strokeColor=#2D7600;labelBackgroundColor=none;" parent="eUgsYPfzA2RoiOCANeuj-9" vertex="1">
+                    <mxGeometry x="160" y="560" width="1120" height="400" as="geometry"/>
+                </mxCell>
+                <mxCell id="64" value="&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;&lt;ul&gt;&lt;li&gt;&lt;span style=&quot;background-color: transparent; font-weight: normal;&quot;&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;Daca utilizatorul exista in baza de date se cauta planul asociat si se conecteaza la cont.&lt;/font&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;font style=&quot;font-size: 12px; font-weight: normal;&quot;&gt;&lt;span style=&quot;background-color: transparent; color: rgb(63, 63, 63);&quot;&gt;Daca are un plan &lt;/span&gt;&lt;em style=&quot;background-color: transparent; color: rgb(63, 63, 63);&quot; data-end=&quot;1223&quot; data-start=&quot;1217&quot;&gt;Free&lt;/em&gt;&lt;span style=&quot;background-color: transparent; color: rgb(63, 63, 63);&quot;&gt; sau orice alt plan in afara celui &lt;/span&gt;&lt;em style=&quot;background-color: transparent; color: rgb(63, 63, 63);&quot; data-end=&quot;1269&quot; data-start=&quot;1258&quot;&gt;Nelimitat&lt;/em&gt;&lt;span style=&quot;background-color: transparent; color: rgb(63, 63, 63);&quot;&gt;&amp;nbsp;si depaseste limita GPT-oss este intrebat daca doreste sa schimbe planul/abonamentul. Daca refuza, ramane la versiunea gratuita.&lt;/span&gt;&lt;/font&gt;&lt;/li&gt;&lt;li&gt;&lt;span style=&quot;background-color: transparent; font-weight: normal;&quot;&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;Planul sau abonamentul se poate schimba oricand.&lt;/font&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;font style=&quot;font-size: 12px; font-weight: normal;&quot;&gt;&lt;p style=&quot;background-color: transparent; color: rgb(63, 63, 63); display: inline !important;&quot; data-end=&quot;1538&quot; data-start=&quot;1458&quot;&gt;Daca utilizatorul nu exista este intrebat daca doreste sa creeze un cont.&amp;nbsp;&lt;/p&gt;&lt;span style=&quot;background-color: transparent; color: rgb(63, 63, 63);&quot;&gt;Daca da introduce email, parola, numele de utilizator si alege planul/abonamentul.&lt;/span&gt;&lt;/font&gt;&lt;/li&gt;&lt;li&gt;&lt;span style=&quot;background-color: transparent; font-weight: normal;&quot;&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;Pentru planurile gratuite contul este creat si activ imediat.&lt;/font&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span style=&quot;background-color: transparent; font-weight: normal;&quot;&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;Pentru planurile cu plata sistemul solicita datele cardului.&lt;/font&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/h1&gt;" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;fillColor=none;" parent="45" vertex="1">
+                    <mxGeometry x="40" y="40" width="1040" height="320" as="geometry"/>
+                </mxCell>
+                <mxCell id="65" value="Administrator" style="swimlane;startSize=20;horizontal=1;containerType=tree;fillColor=#e51400;fontColor=#ffffff;strokeColor=#B20000;" parent="eUgsYPfzA2RoiOCANeuj-9" vertex="1">
+                    <mxGeometry x="160" y="1040" width="1120" height="240" as="geometry"/>
+                </mxCell>
+                <mxCell id="66" value="&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;&lt;ul&gt;&lt;li&gt;&lt;span style=&quot;background-color: transparent; color: rgb(63, 63, 63); font-size: 12px; font-weight: normal;&quot;&gt;Administratorul se conecteaza la fel ca un utilizator normal.&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span style=&quot;color: rgb(63, 63, 63); font-size: 12px; font-weight: normal; background-color: transparent;&quot;&gt;Sistemul cauta contul in baza de date si verifica daca are drepturi de administrator.&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span style=&quot;color: rgb(63, 63, 63); font-size: 12px; font-weight: normal; background-color: transparent;&quot;&gt;Daca da se conecteaza direct si are acces la toate functiile, inclusiv cele administrative (gestionarea utilizatorilor, planurilor etc.).&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/h1&gt;" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;fillColor=none;" parent="65" vertex="1">
+                    <mxGeometry x="40" y="40" width="1040" height="160" as="geometry"/>
+                </mxCell>
+                <mxCell id="44" style="edgeStyle=none;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="43" target="eUgsYPfzA2RoiOCANeuj-9" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="43" value="Utilizator" style="shape=actor;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;gradientColor=#b3b3b3;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="700" width="120" height="160" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ștergere {{ model_name }}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"/>
+</head>
+<body>
+<div class="container mt-5">
+    <h1 class="text-center">Șterge {{ model_name }}</h1>
+    <p>Sunteți sigur că doriți să ștergeți această înregistrare?</p>
+    <table class="table table-bordered">
+        {% for field, value in fields.items %}
+        <tr>
+            <th>{{ field }}</th>
+            <td>{{ value }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Șterge</button>
+        <a href="{{ list_url }}" class="btn btn-secondary">Anulează</a>
+    </form>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
