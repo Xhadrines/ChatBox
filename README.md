@@ -56,3 +56,7 @@ git clone https://github.com/Xhadrines/ChatBox.git
 3. Pentru a configura frontend-ul, accesează [frontend/README.md](frontend/README.md), unde vei găsi informațiile necesare.
 
 4. După ce ai pornit backend-ul și frontend-ul, deschide aplicația în browser accesând linkul generat de frontend `http://127.0.0.1:2002/`.
+
+## Alte informații
+
+**Documentație:** [Apasă-mă](Documentatie-ChatBox.pdf)
