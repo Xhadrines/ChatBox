@@ -2,89 +2,30 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
+from .generic_crud import GenericCRUDView
+
 from ..data_access.user_usage import UserUsageAccessor
+from ..data_access.users import UsersAccessor
 from ..serializers.user_usage import UserUsageSerializer
 
 
-class UserUsageViews(APIView):
+class UserUsageViews(GenericCRUDView):
+    accessor_class = UserUsageAccessor
+    serializer_class = UserUsageSerializer
+
+    fk_fields = {"user": UsersAccessor}
+
+
+class UserUsageByUserView(APIView):
     accessor = UserUsageAccessor()
 
-    def get(self, request, pk=None):
-        if pk:
-            usage = self.accessor.get_by_id(pk)
-            if not usage:
-                return Response(
-                    {"error": "User usage not found"}, status=status.HTTP_404_NOT_FOUND
-                )
-            serializer = UserUsageSerializer(usage)
-            return Response(serializer.data)
+    def get(self, request, user_id=None):
+        if not user_id:
+            return Response(
+                {"error": "User ID este necesar"},
+                status=status.HTTP_400_BAD_REQUEST,
+            )
 
-        usages = self.accessor.get_all()
+        usages = self.accessor.get_all().filter(user__id=user_id).order_by("date")
         serializer = UserUsageSerializer(usages, many=True)
         return Response(serializer.data)
-
-    def post(self, request):
-        serializer = UserUsageSerializer(data=request.data)
-        if serializer.is_valid():
-            data = serializer.validated_data
-
-            usage = self.accessor.add(
-                user=data["user"],
-                messages_sent=data["messages_sent"],
-                files_uploaded=data["files_uploaded"],
-            )
-            return Response(
-                UserUsageSerializer(usage).data, status=status.HTTP_201_CREATED
-            )
-
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-    def put(self, request, pk=None):
-        if not pk:
-            return Response(
-                {"error": "ID required"}, status=status.HTTP_400_BAD_REQUEST
-            )
-
-        usage = self.accessor.get_by_id(pk)
-        if not usage:
-            return Response(
-                {"error": "User usage not found"}, status=status.HTTP_404_NOT_FOUND
-            )
-
-        serializer = UserUsageSerializer(usage, data=request.data)
-        if serializer.is_valid():
-            data = serializer.validated_data
-
-            updated_usage = self.accessor.update(pk, **data)
-            return Response(UserUsageSerializer(updated_usage).data)
-
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-    def patch(self, request, pk=None):
-        if not pk:
-            return Response(
-                {"error": "ID required"}, status=status.HTTP_400_BAD_REQUEST
-            )
-
-        usage = self.accessor.get_by_id(pk)
-        if not usage:
-            return Response(
-                {"error": "User usage not found"}, status=status.HTTP_404_NOT_FOUND
-            )
-
-        serializer = UserUsageSerializer(usage, data=request.data, partial=True)
-        if serializer.is_valid():
-            data = serializer.validated_data
-
-            updated_usage = self.accessor.update(pk, **data)
-            return Response(UserUsageSerializer(updated_usage).data)
-
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-    def delete(self, request, pk=None):
-        deleted = self.accessor.delete(pk)
-        if deleted == 0:
-            return Response(
-                {"error": "User usage not found"}, status=status.HTTP_404_NOT_FOUND
-            )
-        return Response(status=status.HTTP_204_NO_CONTENT)

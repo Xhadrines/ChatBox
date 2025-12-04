@@ -7,7 +7,7 @@ from .views.user_status import UserStatusViews
 from .views.users import UsersViews
 from .views.messages import MessagesViews
 from .views.files import FilesViews
-from .views.user_usage import UserUsageViews
+from .views.user_usage import UserUsageViews, UserUsageByUserView
 from .views.plan_types import PlanTypesViews
 from .views.plans import PlansViews
 from .views.user_plans import UserPlansViews
@@ -25,20 +25,15 @@ from .views.admin.plans import AdminPlansViews
 from .views.admin.user_plans import AdminUserPlansViews
 from .views.admin.user_token import AdminUserTokenView
 
-from .views.services.files_upload import FilesUploadView
-
 from .views.security.register import RegisterView
 from .views.security.login import LoginView
 
 from .views.services.user_active_plan import UserActivePlanView
 from .views.services.change_user_plan import ChangeUserPlanView
-
-from .views.user_usage_user import UserUsageByUserView
-
-from .views.services.log_user_activity import LogUserActivityView
-
+from .views.services.files_upload import FilesUploadView
 from .views.services.chat import ChatView
 from .views.services.chat_events import ChatEventsView
+from .views.services.log_user_activity import LogUserActivityView
 from .views.services.read_txt_file import ReadTxtFileView
 
 urlpatterns = [
@@ -64,6 +59,7 @@ urlpatterns = [
     path("admin/files/<int:pk>/", AdminFilesViews.as_view()),
     path("user-usage/", UserUsageViews.as_view()),
     path("user-usage/<int:pk>/", UserUsageViews.as_view()),
+    path("user-usage/user/<int:user_id>/", UserUsageByUserView.as_view()),
     path("admin/user-usage/", AdminUserUsageViews.as_view()),
     path("admin/user-usage/<int:pk>/", AdminUserUsageViews.as_view()),
     path("plan-types/", PlanTypesViews.as_view()),
@@ -86,9 +82,8 @@ urlpatterns = [
     path("user-active-plan/<int:user_id>/", UserActivePlanView.as_view()),
     path("change-user-plan/<int:user_id>/", ChangeUserPlanView.as_view()),
     path("upload-file/", FilesUploadView.as_view()),
-    path("user-usage/user/<int:user_id>/", UserUsageByUserView.as_view()),
-    path("log-user-activity/<int:user_id>/", LogUserActivityView.as_view()),
     path("chat/<int:user_id>/", ChatView.as_view(), name="chat"),
     path("chat/events/<int:user_id>/", ChatEventsView.as_view()),
+    path("log-user-activity/<int:user_id>/", LogUserActivityView.as_view()),
     path("read-txt/<int:user_id>/", ReadTxtFileView.as_view(), name="read-txt-file"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
