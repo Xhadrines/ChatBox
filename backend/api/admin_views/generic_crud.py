@@ -5,7 +5,7 @@ from rest_framework import status
 from django.contrib.auth.hashers import make_password
 
 
-class GenericCRUDView(APIView):
+class AdminGenericCRUDView(APIView):
     service_class = None
     serializer_class = None
     password_field = None
@@ -37,11 +37,14 @@ class GenericCRUDView(APIView):
 
     def post(self, request):
         serializer = self.serializer_class(data=request.data)
+
         if serializer.is_valid():
-            data = self.handle_password(serializer.validated_data)
+            data = serializer.validated_data
+            data = self.handle_password(data)
             service = self.get_service()
             obj = service.create(data)
             return Response(obj, status=status.HTTP_201_CREATED)
+
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def put(self, request, pk=None):
@@ -52,7 +55,8 @@ class GenericCRUDView(APIView):
 
         serializer = self.serializer_class(data=request.data)
         if serializer.is_valid():
-            data = self.handle_password(serializer.validated_data)
+            data = serializer.validated_data
+            data = self.handle_password(data)
             service = self.get_service()
             updated = service.update(pk, data)
             if not updated:
@@ -60,6 +64,7 @@ class GenericCRUDView(APIView):
                     {"error": "Not found"}, status=status.HTTP_404_NOT_FOUND
                 )
             return Response(updated)
+
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def patch(self, request, pk=None):
@@ -70,7 +75,8 @@ class GenericCRUDView(APIView):
 
         serializer = self.serializer_class(data=request.data, partial=True)
         if serializer.is_valid():
-            data = self.handle_password(serializer.validated_data)
+            data = serializer.validated_data
+            data = self.handle_password(data)
             service = self.get_service()
             updated = service.update(pk, data)
             if not updated:
@@ -78,6 +84,7 @@ class GenericCRUDView(APIView):
                     {"error": "Not found"}, status=status.HTTP_404_NOT_FOUND
                 )
             return Response(updated)
+
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def delete(self, request, pk=None):

@@ -33,7 +33,7 @@ const Chat: React.FC = () => {
       const apiUrl = import.meta.env.VITE_CHAT_API;
 
       if (messagesSent > 0 || filesUploaded > 0) {
-        await fetch(`${apiUrl}/api/log-user-activity/${userId}/`, {
+        await fetch(`${apiUrl}/api/user-usage/log-user-activity/${userId}/`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           credentials: "include",
@@ -136,7 +136,7 @@ const Chat: React.FC = () => {
 
     try {
       const apiUrl = import.meta.env.VITE_CHAT_API;
-      const response = await fetch(`${apiUrl}/api/upload-file/`, {
+      const response = await fetch(`${apiUrl}/api/files/upload-file/`, {
         method: "POST",
         body: formData,
         credentials: "include",
@@ -149,18 +149,29 @@ const Chat: React.FC = () => {
         console.warn("Nu s-a putut parsa JSON-ul:", err);
       }
 
-      if (response.status === 403) {
-        showModalOncePerDay(data.active_plan_id, "file");
+      if (!response.ok) {
+        if (response.status === 403) {
+          showModalOncePerDay(data.active_plan_id, "file");
+        } else {
+          console.error("Upload failed:", data);
+        }
         return;
       }
 
+      await logActivity(0, 1);
+
       const fileUrl = `${apiUrl}${data.file_url}`;
+
+      console.log("fileUrl generat:", fileUrl);
 
       if (fileExt === "txt") {
         try {
-          const txtResp = await fetch(`${apiUrl}/api/read-txt/${data.id}/`, {
-            credentials: "include",
-          });
+          const txtResp = await fetch(
+            `${apiUrl}/api/files/read-txt/${data.id}/`,
+            {
+              credentials: "include",
+            }
+          );
           const txtData = await txtResp.json();
           setMessages((prev) => [
             ...prev,
@@ -175,8 +186,6 @@ const Chat: React.FC = () => {
           { sender: "user", text: data.file_name, fileUrl },
         ]);
       }
-
-      await logActivity(0, 1);
 
       if (
         data.daily_file_limit !== null &&

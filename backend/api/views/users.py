@@ -1,18 +1,11 @@
 from .generic_crud import GenericCRUDView
 
-from ..data_access.users import UsersAccessor
-from ..data_access.user_roles import UserRolesAccessor
-from ..data_access.user_status import UserStatusAccessor
+from ..services.users import UsersService
 from ..serializers.users import UsersSerializer
 
 
 class UsersViews(GenericCRUDView):
-    accessor_class = UsersAccessor
+    service_class = UsersService
     serializer_class = UsersSerializer
-
-    fk_fields = {
-        "role": UserRolesAccessor,
-        "status": UserStatusAccessor,
-    }
 
     password_field = "password"

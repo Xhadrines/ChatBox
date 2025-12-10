@@ -343,7 +343,7 @@ const AdminDashboard: React.FC = () => {
                     </button>
                     <button
                       className="delete-btn"
-                      onClick={() => handleDelete(row.id || row.pk)}
+                      onClick={() => handleDelete(row.id || row.pk || row.user)}
                     >
                       Delete
                     </button>
@@ -410,6 +410,10 @@ const AdminDashboard: React.FC = () => {
                     "uploaded_at",
                     "created_at",
                     "updated_at",
+                    "start_date",
+                    "end_date",
+                    "key",
+                    "created",
                   ].includes(col) ||
                   col.endsWith("_name")
                 )

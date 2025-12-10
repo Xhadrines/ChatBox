@@ -1,9 +1,9 @@
 from .generic_crud import GenericCRUDView
 
-from ..data_access.plan_types import PlanTypesAccessor
+from ..services.plan_types import PlanTypesService
 from ..serializers.plan_types import PlanTypesSerializer
 
 
 class PlanTypesViews(GenericCRUDView):
-    accessor_class = PlanTypesAccessor
+    service_class = PlanTypesService
     serializer_class = PlanTypesSerializer

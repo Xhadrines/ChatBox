@@ -33,7 +33,11 @@ class UserPlansAccessor:
             return None
 
     def get_by_user(self, user_id):
-        return UserPlans.objects.filter(user_id=user_id).order_by("-start_date")
+        return (
+            UserPlans.objects.filter(user_id=user_id)
+            .select_related("plan")
+            .order_by("-start_date")
+        )
 
     def update(self, plan_id, **kwargs):
         try:
@@ -64,3 +68,10 @@ class UserPlansAccessor:
             user_plan.start_date = now
             user_plan.end_date = None
             user_plan.save()
+
+    def end_active_plan(self, user_id, end_date):
+        active_plans = self.get_by_user(user_id)
+        for plan in active_plans:
+            if plan.end_date is None or plan.end_date > timezone.now():
+                plan.end_date = end_date
+                plan.save()

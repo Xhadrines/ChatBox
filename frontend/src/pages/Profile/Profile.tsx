@@ -130,7 +130,7 @@ const Profile: React.FC = () => {
 
     try {
       const response = await fetch(
-        `${apiUrl}/api/change-user-plan/${user.id}/`,
+        `${apiUrl}/api/user-plans/change-user-plan/${user.id}/`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -160,7 +160,9 @@ const Profile: React.FC = () => {
 
   const fetchActivePlan = async (userId: number) => {
     try {
-      const res = await fetch(`${apiUrl}/api/user-active-plan/${userId}/`);
+      const res = await fetch(
+        `${apiUrl}/api/user-plans/user-active-plan/${userId}/`
+      );
       console.log(res);
       if (!res.ok) return null;
       const data = await res.json();

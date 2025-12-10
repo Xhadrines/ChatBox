@@ -6,35 +6,29 @@ from .views.user_roles import UserRolesViews
 from .views.user_status import UserStatusViews
 from .views.users import UsersViews
 from .views.messages import MessagesViews
-from .views.files import FilesViews
-from .views.user_usage import UserUsageViews, UserUsageByUserView
+from .views.files import FilesViews, FilesUploadView, ReadTxtFileView
+from .views.user_usage import UserUsageViews, UserUsageByUserView, LogUserActivityView
 from .views.plan_types import PlanTypesViews
 from .views.plans import PlansViews
-from .views.user_plans import UserPlansViews
+from .views.user_plans import UserPlansViews, ChangeUserPlanView, UserActivePlanView
 
 from .views.home import HomeView
 
-from .views.admin.user_roles import AdminUserRolesViews
-from .views.admin.user_status import AdminUserStatusViews
-from .views.admin.users import AdminUsersViews
-from .views.admin.messages import AdminMessagesViews
-from .views.admin.files import AdminFilesViews
-from .views.admin.user_usage import AdminUserUsageViews
-from .views.admin.plan_types import AdminPlanTypesViews
-from .views.admin.plans import AdminPlansViews
-from .views.admin.user_plans import AdminUserPlansViews
-from .views.admin.user_token import AdminUserTokenView
+from .admin_views.user_roles import AdminUserRolesViews
+from .admin_views.user_status import AdminUserStatusViews
+from .admin_views.users import AdminUsersViews
+from .admin_views.messages import AdminMessagesViews
+from .admin_views.files import AdminFilesViews
+from .admin_views.user_usage import AdminUserUsageViews
+from .admin_views.plan_types import AdminPlanTypesViews
+from .admin_views.plans import AdminPlansViews
+from .admin_views.user_plans import AdminUserPlansViews
+from .admin_views.user_token import AdminUserTokenView
 
 from .views.security.register import RegisterView
 from .views.security.login import LoginView
 
-from .views.services.user_active_plan import UserActivePlanView
-from .views.services.change_user_plan import ChangeUserPlanView
-from .views.services.files_upload import FilesUploadView
-from .views.services.chat import ChatView
-from .views.services.chat_events import ChatEventsView
-from .views.services.log_user_activity import LogUserActivityView
-from .views.services.read_txt_file import ReadTxtFileView
+from .views.chat.chat import ChatEventsView, ChatView
 
 urlpatterns = [
     path("user-roles/", UserRolesViews.as_view()),
@@ -55,11 +49,14 @@ urlpatterns = [
     path("admin/messages/<int:pk>/", AdminMessagesViews.as_view()),
     path("files/", FilesViews.as_view()),
     path("files/<int:pk>/", FilesViews.as_view()),
+    path("files/upload-file/", FilesUploadView.as_view()),
+    path("files/read-txt/<int:file_id>/", ReadTxtFileView.as_view()),
     path("admin/files/", AdminFilesViews.as_view()),
     path("admin/files/<int:pk>/", AdminFilesViews.as_view()),
     path("user-usage/", UserUsageViews.as_view()),
     path("user-usage/<int:pk>/", UserUsageViews.as_view()),
     path("user-usage/user/<int:user_id>/", UserUsageByUserView.as_view()),
+    path("user-usage/log-user-activity/<int:user_id>/", LogUserActivityView.as_view()),
     path("admin/user-usage/", AdminUserUsageViews.as_view()),
     path("admin/user-usage/<int:pk>/", AdminUserUsageViews.as_view()),
     path("plan-types/", PlanTypesViews.as_view()),
@@ -72,6 +69,8 @@ urlpatterns = [
     path("admin/plans/<int:pk>/", AdminPlansViews.as_view()),
     path("user-plans/", UserPlansViews.as_view()),
     path("user-plans/<int:pk>/", UserPlansViews.as_view()),
+    path("user-plans/user-active-plan/<int:user_id>/", UserActivePlanView.as_view()),
+    path("user-plans/change-user-plan/<int:user_id>/", ChangeUserPlanView.as_view()),
     path("admin/user-plans/", AdminUserPlansViews.as_view()),
     path("admin/user-plans/<int:pk>/", AdminUserPlansViews.as_view()),
     path("admin/user-token/", AdminUserTokenView.as_view()),
@@ -79,11 +78,6 @@ urlpatterns = [
     path("", HomeView.as_view(), name="home"),
     path("register/", RegisterView.as_view()),
     path("login/", LoginView.as_view()),
-    path("user-active-plan/<int:user_id>/", UserActivePlanView.as_view()),
-    path("change-user-plan/<int:user_id>/", ChangeUserPlanView.as_view()),
-    path("upload-file/", FilesUploadView.as_view()),
-    path("chat/<int:user_id>/", ChatView.as_view(), name="chat"),
+    path("chat/<int:user_id>/", ChatView.as_view()),
     path("chat/events/<int:user_id>/", ChatEventsView.as_view()),
-    path("log-user-activity/<int:user_id>/", LogUserActivityView.as_view()),
-    path("read-txt/<int:user_id>/", ReadTxtFileView.as_view(), name="read-txt-file"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

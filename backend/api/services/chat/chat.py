@@ -1,0 +1,139 @@
+import os
+import pdfplumber
+import ollama
+
+from django.conf import settings
+from django.utils import timezone
+
+from ...data_access.messages import MessagesAccessor
+from ...data_access.files import FilesAccessor
+from ...data_access.users import UsersAccessor
+from ...data_access.user_plans import UserPlansAccessor
+
+
+class ChatService:
+    def __init__(self):
+        self.messages_accessor = MessagesAccessor()
+        self.files_accessor = FilesAccessor()
+        self.users_accessor = UsersAccessor()
+        self.user_plans_accessor = UserPlansAccessor()
+
+        self.MODEL_MAPPING = {
+            "gpt-oss": "gpt-oss:20b",
+            "llama3.2": "llama3.2",
+        }
+
+    def get_user_files_content(self, user_id):
+        files = self.files_accessor.get_all().filter(user_id=user_id)
+        content = ""
+        for file in files:
+            file_path = file.file_path
+            if not os.path.exists(file_path):
+                continue
+            ext = file.file_name.split(".")[-1].lower()
+            try:
+                if ext == "txt":
+                    with open(file_path, "r", encoding="utf-8") as f:
+                        content += f"[File: {file.file_name}]\n{f.read()}\n"
+                elif ext == "pdf":
+                    with pdfplumber.open(file_path) as pdf:
+                        text = "\n".join(
+                            page.extract_text() or "" for page in pdf.pages
+                        )
+                        content += f"[File: {file.file_name}]\n{text}\n"
+            except Exception as e:
+                print(f"Error reading file {file.file_name}: {e}")
+        return content
+
+    def get_chat_events(self, user_id):
+        messages = self.messages_accessor.get_by_user_id(user_id)
+        files = self.files_accessor.get_all().filter(user_id=user_id)
+
+        events = []
+        for m in messages:
+            events.append(
+                {
+                    "type": "message",
+                    "text": m.user_msg,
+                    "llm_resp": m.llm_resp,
+                    "llm_used": m.llm_used,
+                    "created_at": m.uploaded_at,
+                }
+            )
+        for f in files:
+            events.append(
+                {
+                    "type": "file",
+                    "file_name": f.file_name,
+                    "file_url": f"{settings.MEDIA_URL}{f.user.id}/{f.file_name}",
+                    "created_at": f.uploaded_at,
+                }
+            )
+        events.sort(key=lambda x: x["created_at"])
+        return events
+
+    def send_message(self, user_id, prompt):
+        user = self.users_accessor.get_by_id(user_id)
+        if not user:
+            return None, "User not found"
+
+        now = timezone.now()
+        user_plans = self.user_plans_accessor.get_by_user(user.id)
+        active_plan = next(
+            (p for p in user_plans if p.end_date is None or p.end_date >= now), None
+        )
+        if not active_plan:
+            return None, "No active plan"
+
+        gpt_oss_limit = getattr(active_plan.plan, "daily_prm_msg", None)
+        gpt_oss_count_today = self.messages_accessor.count_messages_today(
+            user, "gpt-oss:20b"
+        )
+
+        model_key = (
+            "gpt-oss"
+            if gpt_oss_limit is None or gpt_oss_count_today < gpt_oss_limit
+            else getattr(active_plan.plan, "name_llm_std", "llama3.2")
+        )
+        if model_key == "gpt-oss":
+            gpt_oss_count_today += 1
+
+        model_to_use = self.MODEL_MAPPING.get(model_key, "llama3.2")
+
+        messages_history = self.messages_accessor.get_by_user_id(user.id)
+        conversation_context = "".join(
+            f"[User] {m.user_msg}\n[AI] {m.llm_resp}\n" for m in messages_history
+        )
+
+        files_context = self.get_user_files_content(user.id)
+        user_context = f"User info:\nUsername: {user.username}\nEmail: {user.email}\nPlan: {active_plan.plan.name}\n"
+
+        full_prompt = (
+            user_context
+            + "\n"
+            + files_context
+            + "\n"
+            + conversation_context
+            + f"[User] {prompt}\n[AI]"
+        )
+
+        result = ollama.generate(model=model_to_use, prompt=full_prompt)
+        llm_response = result.get("response", "")
+
+        new_message = self.messages_accessor.add(
+            user=user, user_msg=prompt, llm_resp=llm_response, llm_used=model_to_use
+        )
+
+        remaining = (
+            None
+            if gpt_oss_limit is None
+            else max(0, gpt_oss_limit - gpt_oss_count_today)
+        )
+
+        return {
+            "response": llm_response,
+            "saved_message": new_message,
+            "model_used": model_to_use,
+            "gpt_oss_remaining": remaining,
+            "active_plan_id": active_plan.id,
+        }, None

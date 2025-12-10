@@ -1,9 +1,9 @@
 from .generic_crud import GenericCRUDView
 
-from ..data_access.user_status import UserStatusAccessor
+from ..services.user_status import UserStatusService
 from ..serializers.user_status import UserStatusSerializer
 
 
 class UserStatusViews(GenericCRUDView):
-    accessor_class = UserStatusAccessor
+    service_class = UserStatusService
     serializer_class = UserStatusSerializer

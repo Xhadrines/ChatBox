@@ -1,9 +1,9 @@
 from .generic_crud import GenericCRUDView
 
-from ..data_access.user_roles import UserRolesAccessor
+from ..services.user_roles import UserRolesService
 from ..serializers.user_roles import UserRolesSerializer
 
 
 class UserRolesViews(GenericCRUDView):
-    accessor_class = UserRolesAccessor
+    service_class = UserRolesService
     serializer_class = UserRolesSerializer

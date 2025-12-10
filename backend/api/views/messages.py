@@ -1,12 +1,9 @@
 from .generic_crud import GenericCRUDView
 
-from ..data_access.messages import MessagesAccessor
-from ..data_access.users import UsersAccessor
+from ..services.messages import MessagesService
 from ..serializers.messages import MessagesSerializer
 
 
 class MessagesViews(GenericCRUDView):
-    accessor_class = MessagesAccessor
+    service_class = MessagesService
     serializer_class = MessagesSerializer
-
-    fk_fields = {"user": UsersAccessor}

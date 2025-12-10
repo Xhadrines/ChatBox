@@ -8,3 +8,8 @@ class UserUsageSerializer(serializers.ModelSerializer):
         model = UserUsage
         fields = ["id", "user", "date", "messages_sent", "files_uploaded"]
         read_only_fields = ("date",)
+
+
+class UserUsageLogSerializer(serializers.Serializer):
+    messages_sent = serializers.IntegerField(default=0)
+    files_uploaded = serializers.IntegerField(default=0)

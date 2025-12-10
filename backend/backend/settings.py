@@ -98,9 +98,6 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-MEDIA_ROOT = os.path.join(BASE_DIR, "user_files")
-MEDIA_URL = "/user_files/"
-
 DATABASES = {
     # "default": {
     #     "ENGINE": "django.db.backends.sqlite3",

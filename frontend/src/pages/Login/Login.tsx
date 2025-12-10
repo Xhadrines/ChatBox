@@ -37,7 +37,7 @@ const Login: React.FC = () => {
 
       try {
         const planResponse = await fetch(
-          `${apiUrl}/api/user-active-plan/${data.user.id}/`
+          `${apiUrl}/api/user-plans/user-active-plan/${data.user.id}/`
         );
         const planData = await planResponse.json();
 
