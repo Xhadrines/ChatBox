@@ -7,6 +7,10 @@ from .generic_crud import GenericCRUDView
 from ..services.user_plans import UserPlansService
 from ..serializers.user_plans import UserPlansSerializer
 
+import logging
+
+logger = logging.getLogger(__name__)
+
 
 class UserPlansViews(GenericCRUDView):
     service_class = UserPlansService
@@ -19,14 +23,25 @@ class ChangeUserPlanView(APIView):
     def post(self, request, user_id):
         new_plan_id = request.data.get("plan_id")
         if not new_plan_id:
+            logger.warning(
+                f"[CHANGE PLAN FAILED] UserID: {user_id} | Reason: plan_id missing"
+            )
             return Response(
                 {"error": "plan_id required"}, status=status.HTTP_400_BAD_REQUEST
             )
 
+        logger.info(
+            f"[CHANGE PLAN ATTEMPT] UserID: {user_id} | NewPlanID: {new_plan_id}"
+        )
+
         active_plan, error = self.service.change_user_plan(user_id, new_plan_id)
         if error:
+            logger.warning(f"[CHANGE PLAN FAILED] UserID: {user_id} | Error: {error}")
             return Response({"error": error}, status=status.HTTP_404_NOT_FOUND)
 
+        logger.info(
+            f"[CHANGE PLAN SUCCESS] UserID: {user_id} | NewPlanID: {new_plan_id}"
+        )
         return Response({"active_plan": active_plan}, status=status.HTTP_200_OK)
 
 

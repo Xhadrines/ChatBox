@@ -10,6 +10,10 @@ from ...data_access.files import FilesAccessor
 from ...data_access.users import UsersAccessor
 from ...data_access.user_plans import UserPlansAccessor
 
+import logging
+
+logger = logging.getLogger(__name__)
+
 
 class ChatService:
     def __init__(self):
@@ -73,8 +77,11 @@ class ChatService:
         return events
 
     def send_message(self, user_id, prompt):
+        logger.info(f"[CHAT ATTEMPT] UserID: {user_id} | Prompt length: {len(prompt)}")
+
         user = self.users_accessor.get_by_id(user_id)
         if not user:
+            logger.warning(f"[CHAT FAILED] UserID: {user_id} | Reason: User not found")
             return None, "User not found"
 
         now = timezone.now()
@@ -83,6 +90,7 @@ class ChatService:
             (p for p in user_plans if p.end_date is None or p.end_date >= now), None
         )
         if not active_plan:
+            logger.warning(f"[CHAT FAILED] UserID: {user_id} | Reason: No active plan")
             return None, "No active plan"
 
         gpt_oss_limit = getattr(active_plan.plan, "daily_prm_msg", None)
@@ -128,6 +136,11 @@ class ChatService:
             None
             if gpt_oss_limit is None
             else max(0, gpt_oss_limit - gpt_oss_count_today)
+        )
+
+        logger.info(
+            f"[CHAT SUCCESS] UserID: {user.id} | Model: {model_to_use} | "
+            f"Prompt length: {len(prompt)} | Remaining: {remaining}"
         )
 
         return {
