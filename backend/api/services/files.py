@@ -1,11 +1,16 @@
 import os
 from django.conf import settings
-from django.utils import timezone
+
+from .business.file_plan_policy import FilePlanPolicy
 
 from ..data_access.files import FilesAccessor
 from ..data_access.users import UsersAccessor
 from ..data_access.user_plans import UserPlansAccessor
 from ..serializers.files import FilesSerializer
+
+import logging
+
+logger = logging.getLogger(__name__)
 
 
 class FilesService:
@@ -14,6 +19,10 @@ class FilesService:
         self.users_accessor = UsersAccessor()
         self.user_plans_accessor = UserPlansAccessor()
         self.serializer_class = FilesSerializer
+
+        self.file_plan_policy = FilePlanPolicy(
+            user_plans_accessor=self.user_plans_accessor
+        )
 
     def get_all(self):
         objs = self.files_accessor.get_all()
@@ -44,24 +53,17 @@ class FilesService:
         if not user:
             return None, "User nu există"
 
-        now = timezone.now()
-        user_plans = self.user_plans_accessor.get_by_user(user.id)
+        policy, error = self.file_plan_policy.resolve_file_policy(user)
+        if error:
+            return None, error
 
-        paid_plan = next(
-            (p for p in user_plans if p.end_date and p.start_date <= now <= p.end_date),
-            None,
+        active_plan = policy["active_plan"]
+        daily_file_limit = policy["daily_file_limit"]
+
+        logger.info(
+            f"[FILE UPLOAD] UserID: {user.id} | Active Plan: {active_plan.plan.name} | Daily file limit: {daily_file_limit}"
         )
 
-        if paid_plan:
-            active_plan = paid_plan
-        else:
-            free_plan = next((p for p in user_plans if p.end_date is None), None)
-            active_plan = free_plan
-
-        if not active_plan:
-            return None, "Userul nu are plan activ"
-
-        daily_file_limit = getattr(active_plan.plan, "daily_file_limit", None)
         files_today_count = self.files_accessor.count_files_uploaded_today(user.id)
 
         if daily_file_limit is not None and files_today_count >= daily_file_limit:
@@ -74,14 +76,22 @@ class FilesService:
         os.makedirs(user_dir, exist_ok=True)
         file_path = os.path.join(user_dir, file_obj.name)
 
-        with open(file_path, "wb+") as destination:
-            for chunk in file_obj.chunks():
-                destination.write(chunk)
+        try:
+            with open(file_path, "wb+") as destination:
+                for chunk in file_obj.chunks():
+                    destination.write(chunk)
 
-        file_record = self.files_accessor.add(
-            user=user, file_name=file_obj.name, file_path=file_path
-        )
-        return file_record, None
+            file_record = self.files_accessor.add(
+                user=user, file_name=file_obj.name, file_path=file_path
+            )
+
+            return file_record, None
+
+        except Exception as e:
+            logger.exception(
+                f"[FILE UPLOAD ERROR] UserID: {user.id} | File: {file_obj.name} | Error: {e}"
+            )
+            return None, f"Eroare la încărcarea fișierului: {str(e)}"
 
     def read_txt_file(self, file_id):
         file_record = self.files_accessor.get_by_id(file_id)

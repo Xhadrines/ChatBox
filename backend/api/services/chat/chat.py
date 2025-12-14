@@ -3,7 +3,8 @@ import pdfplumber
 import ollama
 
 from django.conf import settings
-from django.utils import timezone
+
+from ..business.chat_plan_policy import ChatPlanPolicy
 
 from ...data_access.messages import MessagesAccessor
 from ...data_access.files import FilesAccessor
@@ -26,6 +27,12 @@ class ChatService:
             "gpt-oss": "gpt-oss:20b",
             "llama3.2": "llama3.2",
         }
+
+        self.chat_plan_policy = ChatPlanPolicy(
+            user_plans_accessor=self.user_plans_accessor,
+            messages_accessor=self.messages_accessor,
+            model_mapping=self.MODEL_MAPPING,
+        )
 
     def get_user_files_content(self, user_id):
         files = self.files_accessor.get_all().filter(user_id=user_id)
@@ -81,32 +88,16 @@ class ChatService:
 
         user = self.users_accessor.get_by_id(user_id)
         if not user:
-            logger.warning(f"[CHAT FAILED] UserID: {user_id} | Reason: User not found")
+            logger.warning(f"[CHAT FAILED] UserID: {user_id} | User not found")
             return None, "User not found"
 
-        now = timezone.now()
-        user_plans = self.user_plans_accessor.get_by_user(user.id)
-        active_plan = next(
-            (p for p in user_plans if p.end_date is None or p.end_date >= now), None
-        )
-        if not active_plan:
-            logger.warning(f"[CHAT FAILED] UserID: {user_id} | Reason: No active plan")
-            return None, "No active plan"
+        policy, error = self.chat_plan_policy.resolve_chat_policy(user)
+        if error:
+            return None, error
 
-        gpt_oss_limit = getattr(active_plan.plan, "daily_prm_msg", None)
-        gpt_oss_count_today = self.messages_accessor.count_messages_today(
-            user, "gpt-oss:20b"
-        )
-
-        model_key = (
-            "gpt-oss"
-            if gpt_oss_limit is None or gpt_oss_count_today < gpt_oss_limit
-            else getattr(active_plan.plan, "name_llm_std", "llama3.2")
-        )
-        if model_key == "gpt-oss":
-            gpt_oss_count_today += 1
-
-        model_to_use = self.MODEL_MAPPING.get(model_key, "llama3.2")
+        active_plan = policy["active_plan"]
+        model_to_use = policy["model_to_use"]
+        remaining = policy["remaining"]
 
         messages_history = self.messages_accessor.get_by_user_id(user.id)
         conversation_context = "".join(
@@ -114,7 +105,12 @@ class ChatService:
         )
 
         files_context = self.get_user_files_content(user.id)
-        user_context = f"User info:\nUsername: {user.username}\nEmail: {user.email}\nPlan: {active_plan.plan.name}\n"
+        user_context = (
+            f"User info:\n"
+            f"Username: {user.username}\n"
+            f"Email: {user.email}\n"
+            f"Plan: {active_plan.plan.name}\n"
+        )
 
         full_prompt = (
             user_context
@@ -125,28 +121,31 @@ class ChatService:
             + f"[User] {prompt}\n[AI]"
         )
 
-        result = ollama.generate(model=model_to_use, prompt=full_prompt)
-        llm_response = result.get("response", "")
+        try:
+            result = ollama.generate(model=model_to_use, prompt=full_prompt)
+            llm_response = result.get("response", "")
 
-        new_message = self.messages_accessor.add(
-            user=user, user_msg=prompt, llm_resp=llm_response, llm_used=model_to_use
-        )
+            new_message = self.messages_accessor.add(
+                user=user,
+                user_msg=prompt,
+                llm_resp=llm_response,
+                llm_used=model_to_use,
+            )
 
-        remaining = (
-            None
-            if gpt_oss_limit is None
-            else max(0, gpt_oss_limit - gpt_oss_count_today)
-        )
+            logger.info(
+                f"[CHAT SUCCESS] UserID: {user.id} | Model: {model_to_use} | Remaining: {remaining}"
+            )
 
-        logger.info(
-            f"[CHAT SUCCESS] UserID: {user.id} | Model: {model_to_use} | "
-            f"Prompt length: {len(prompt)} | Remaining: {remaining}"
-        )
+            return {
+                "response": llm_response,
+                "saved_message": new_message,
+                "model_used": model_to_use,
+                "gpt_oss_remaining": remaining,
+                "active_plan_id": active_plan.id,
+            }, None
 
-        return {
-            "response": llm_response,
-            "saved_message": new_message,
-            "model_used": model_to_use,
-            "gpt_oss_remaining": remaining,
-            "active_plan_id": active_plan.id,
-        }, None
+        except Exception as e:
+            logger.exception(
+                f"[CHAT ERROR] UserID: {user.id} | Model: {model_to_use} | Prompt length: {len(prompt)} | Error: {e}"
+            )
+            return None, f"Error during message generation: {e}"

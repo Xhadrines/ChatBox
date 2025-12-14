@@ -149,10 +149,13 @@ const Chat: React.FC = () => {
         console.warn("Nu s-a putut parsa JSON-ul:", err);
       }
 
-      if (!response.ok) {
-        if (response.status === 403) {
-          showModalOncePerDay(data.active_plan_id, "file");
-        } else {
+      const reachedLimit =
+        data.daily_file_limit !== null &&
+        data.uploaded_today >= data.daily_file_limit;
+
+      if (!response.ok || reachedLimit) {
+        showModalOncePerDay(data.active_plan_id || "unknown", "file");
+        if (!response.ok) {
           console.error("Upload failed:", data);
         }
         return;
@@ -161,16 +164,13 @@ const Chat: React.FC = () => {
       await logActivity(0, 1);
 
       const fileUrl = `${apiUrl}${data.file_url}`;
-
       console.log("fileUrl generat:", fileUrl);
 
       if (fileExt === "txt") {
         try {
           const txtResp = await fetch(
             `${apiUrl}/api/files/read-txt/${data.id}/`,
-            {
-              credentials: "include",
-            }
+            { credentials: "include" }
           );
           const txtData = await txtResp.json();
           setMessages((prev) => [
@@ -186,15 +186,9 @@ const Chat: React.FC = () => {
           { sender: "user", text: data.file_name, fileUrl },
         ]);
       }
-
-      if (
-        data.daily_file_limit !== null &&
-        data.uploaded_today >= data.daily_file_limit
-      ) {
-        showModalOncePerDay(data.active_plan_id, "file");
-      }
     } catch (err) {
       console.error(err);
+      showModalOncePerDay("unknown", "file");
     }
   };
 
