@@ -1,6 +1,7 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
+from rest_framework.exceptions import PermissionDenied
 
 from django.contrib.auth.hashers import make_password
 
@@ -16,6 +17,29 @@ class AdminGenericCRUDView(APIView):
     service_class = None
     serializer_class = None
     password_field = None
+
+    def initial(self, request, *args, **kwargs):
+        super().initial(request, *args, **kwargs)
+
+        user = getattr(request, "user", None)
+
+        if not user or not hasattr(user, "role"):
+            logger.warning(
+                "[ADMIN ACCESS DENIED] Anonymous user tried to access admin endpoint."
+            )
+            raise PermissionDenied(
+                "You do not have permission to access this resource."
+            )
+
+        if user.role.name.lower() != "administrator":
+            logger.warning(
+                f"[ADMIN ACCESS DENIED] User {user.id} | Role: {user.role.name}"
+            )
+            raise PermissionDenied(
+                "You do not have permission to access this resource."
+            )
+
+        logger.info(f"[ADMIN ACCESS GRANTED] User {user.id} | Role: {user.role.name}")
 
     def get_service(self):
         return self.service_class()

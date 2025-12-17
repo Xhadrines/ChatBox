@@ -147,8 +147,13 @@ const AdminDashboard: React.FC = () => {
 
   const fetchTableData = async () => {
     try {
+      const token = localStorage.getItem("token");
+
       const res = await fetch(`${apiUrl}/api/admin/${activeTable.endpoint}/`, {
-        credentials: "include",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Token ${token}`,
+        },
       });
       if (res.ok) setData(await res.json());
     } catch (err) {
@@ -192,9 +197,15 @@ const AdminDashboard: React.FC = () => {
     const newOptions: { [key: string]: any[] } = {};
     for (const [fkField, fkEndpoint] of Object.entries(activeTable.fks)) {
       try {
+        const token = localStorage.getItem("token");
+
         const res = await fetch(`${apiUrl}/api/admin/${fkEndpoint}/`, {
-          credentials: "include",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Token ${token}`,
+          },
         });
+
         if (res.ok) newOptions[fkField] = await res.json();
       } catch (err) {
         console.error(err);
@@ -206,9 +217,17 @@ const AdminDashboard: React.FC = () => {
   const handleDelete = async (id: number) => {
     if (!window.confirm("Sigur vrei să ștergi acest rând?")) return;
     try {
+      const token = localStorage.getItem("token");
+
       const res = await fetch(
         `${apiUrl}/api/admin/${activeTable.endpoint}/${id}/`,
-        { method: "DELETE", credentials: "include" }
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Token ${token}`,
+          },
+        }
       );
       if (res.status === 204) fetchTableData();
     } catch (err) {
@@ -248,10 +267,14 @@ const AdminDashboard: React.FC = () => {
         delete bodyData.password;
       }
 
+      const token = localStorage.getItem("token");
+
       const res = await fetch(url, {
         method,
-        headers: { "Content-Type": "application/json" },
-        credentials: "include",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Token ${token}`,
+        },
         body: JSON.stringify(bodyData),
       });
       if (res.ok) {

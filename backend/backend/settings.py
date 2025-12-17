@@ -54,6 +54,13 @@ INSTALLED_APPS = [
     "corsheaders",
 ]
 
+REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        "common.authentication.CustomTokenAuthentication",
+    ],
+}
+
+
 MIDDLEWARE = [
     "corsheaders.middleware.CorsMiddleware",
     "django.middleware.security.SecurityMiddleware",
