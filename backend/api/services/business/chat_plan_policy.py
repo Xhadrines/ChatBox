@@ -1,31 +1,25 @@
 from django.utils import timezone
 import logging
-from threading import Lock
+
+from common.cache.policies import get_chat_policy_cache, set_chat_policy_cache
+
 
 logger = logging.getLogger(__name__)
 
 
 class ChatPlanPolicy:
-    CACHE_TTL = 60
-
     def __init__(self, user_plans_accessor, messages_accessor, model_mapping):
         self.user_plans_accessor = user_plans_accessor
         self.messages_accessor = messages_accessor
         self.model_mapping = model_mapping
 
-        self._cache = {}
-        self._lock = Lock()
-
     def resolve_chat_policy(self, user):
-        now = timezone.now()
+        cached = get_chat_policy_cache(user.id)
+        if cached:
+            logger.info(f"[CACHE] Using chat policy cache for UserID {user.id}")
+            return cached, None
 
-        with self._lock:
-            cache_entry = self._cache.get(user.id)
-            if cache_entry:
-                if now.timestamp() - cache_entry["timestamp"] < self.CACHE_TTL:
-                    return cache_entry["data"], None
-                else:
-                    del self._cache[user.id]
+        now = timezone.now()
 
         user_plans = self.user_plans_accessor.get_by_user(user.id)
         active_plans = [
@@ -71,9 +65,8 @@ class ChatPlanPolicy:
             "remaining": remaining,
         }
 
-        with self._lock:
-            self._cache[user.id] = {"timestamp": now.timestamp(), "data": result}
-            logger.info(f"[CACHE] Created/Updated cache for UserID {user.id}")
+        set_chat_policy_cache(user.id, result)
+        logger.info(f"[CACHE] Created chat policy cache for UserID {user.id}")
 
         logger.info(
             f"[CHAT POLICY] UserID {user.id} | Active Plan: {active_plan.plan.name} | "
@@ -81,11 +74,3 @@ class ChatPlanPolicy:
         )
 
         return result, None
-
-    def invalidate_cache(self, user_id=None):
-        with self._lock:
-            if user_id is None:
-                self._cache.clear()
-            else:
-                self._cache.pop(user_id, None)
-        logger.info(f"[CACHE] Invalidated cache for user_id={user_id}")

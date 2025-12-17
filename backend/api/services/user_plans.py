@@ -6,6 +6,8 @@ from ..data_access.plans import PlansAccessor
 from ..data_access.users import UsersAccessor
 from ..serializers.user_plans import UserPlansSerializer
 
+from common.cache.invalidate import invalidate_all_policy_caches
+
 
 class UserPlansService:
     def __init__(self):
@@ -65,6 +67,8 @@ class UserPlansService:
             plan=new_plan,
             end_date=end_date,
         )
+
+        invalidate_all_policy_caches(user_id=user_id)
 
         serialized = self.serializer_class(active_plan).data
         return serialized, None

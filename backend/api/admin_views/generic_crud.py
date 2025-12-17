@@ -4,6 +4,9 @@ from rest_framework import status
 
 from django.contrib.auth.hashers import make_password
 
+from common.cache.policies import get_admin_cache, set_admin_cache
+from common.cache.invalidate import invalidate_all_policy_caches
+
 import logging
 
 logger = logging.getLogger(__name__)
@@ -27,6 +30,12 @@ class AdminGenericCRUDView(APIView):
 
     def get(self, request, pk=None):
         service = self.get_service()
+        service_name = service.__class__.__name__
+
+        cached = get_admin_cache(service_name, pk)
+        if cached is not None:
+            logger.info(f"[CACHE HIT] {service_name}:{pk or 'all'}")
+            return Response(cached)
 
         if pk:
             obj = service.get_by_id(pk)
@@ -37,10 +46,18 @@ class AdminGenericCRUDView(APIView):
                 return Response(
                     {"error": "Not found"}, status=status.HTTP_404_NOT_FOUND
                 )
+
+            set_admin_cache(service_name, obj, pk)
+            logger.info(f"[CACHE SET] {service_name}:{pk}")
+
             logger.info(f"[ADMIN GET SUCCESS] User: {request.user.id} | PK: {pk}")
             return Response(obj)
 
         objs = service.get_all()
+
+        set_admin_cache(service_name, objs)
+        logger.info(f"[CACHE SET] {service_name}:all")
+
         logger.info(f"[ADMIN GET ALL] User: {request.user.id} | Count: {len(objs)}")
         return Response(objs)
 
@@ -52,6 +69,9 @@ class AdminGenericCRUDView(APIView):
             data = self.handle_password(data)
             service = self.get_service()
             obj = service.create(data)
+
+            invalidate_all_policy_caches()
+
             logger.info(
                 f"[ADMIN CREATE] User: {request.user.id} | Created ID: {obj.get('id')}"
             )
@@ -85,6 +105,8 @@ class AdminGenericCRUDView(APIView):
                     {"error": "Not found"}, status=status.HTTP_404_NOT_FOUND
                 )
 
+            invalidate_all_policy_caches()
+
             logger.info(f"[ADMIN UPDATE SUCCESS] User: {request.user.id} | PK: {pk}")
             return Response(updated)
 
@@ -116,6 +138,8 @@ class AdminGenericCRUDView(APIView):
                     {"error": "Not found"}, status=status.HTTP_404_NOT_FOUND
                 )
 
+            invalidate_all_policy_caches()
+
             logger.info(
                 f"[ADMIN PATCH SUCCESS] User: {request.user.id} | PK: {pk} | Fields updated: {list(data.keys())}"
             )
@@ -134,6 +158,8 @@ class AdminGenericCRUDView(APIView):
                 f"[ADMIN DELETE FAILED] User: {request.user.id} | PK: {pk} | Not found"
             )
             return Response({"error": "Not found"}, status=status.HTTP_404_NOT_FOUND)
+
+        invalidate_all_policy_caches()
 
         logger.info(f"[ADMIN DELETE SUCCESS] User: {request.user.id} | PK: {pk}")
         return Response(status=status.HTTP_204_NO_CONTENT)

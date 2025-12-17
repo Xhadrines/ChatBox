@@ -1,32 +1,23 @@
 import logging
 from django.utils import timezone
-from threading import Lock
+
+from common.cache.policies import get_file_policy_cache, set_file_policy_cache
+
 
 logger = logging.getLogger(__name__)
 
 
 class FilePlanPolicy:
-    CACHE_TTL = 60
-
     def __init__(self, user_plans_accessor):
         self.user_plans_accessor = user_plans_accessor
 
-        self._cache = {}
-        self._lock = Lock()
-
     def resolve_file_policy(self, user):
-        now = timezone.now()
+        cached = get_file_policy_cache(user.id)
+        if cached:
+            logger.info(f"[CACHE] Using file policy cache for UserID {user.id}")
+            return cached, None
 
-        with self._lock:
-            cache_entry = self._cache.get(user.id)
-            if cache_entry:
-                if now.timestamp() - cache_entry["timestamp"] < self.CACHE_TTL:
-                    logger.info(
-                        f"[CACHE] Using cached file policy for UserID {user.id}"
-                    )
-                    return cache_entry["data"], None
-                else:
-                    del self._cache[user.id]
+        now = timezone.now()
 
         user_plans = self.user_plans_accessor.get_by_user(user.id)
 
@@ -53,22 +44,11 @@ class FilePlanPolicy:
             "daily_file_limit": daily_file_limit,
         }
 
-        with self._lock:
-            self._cache[user.id] = {"timestamp": now.timestamp(), "data": result}
-            logger.info(
-                f"[CACHE] Created/Updated file policy cache for UserID {user.id}"
-            )
+        set_file_policy_cache(user.id, result)
+        logger.info(f"[CACHE] Created file policy cache for UserID {user.id}")
 
         logger.info(
             f"[FILE POLICY] UserID: {user.id} | Active Plan: {active_plan.plan.name} | Daily limit: {daily_file_limit}"
         )
 
         return result, None
-
-    def invalidate_cache(self, user_id=None):
-        with self._lock:
-            if user_id is None:
-                self._cache.clear()
-            else:
-                self._cache.pop(user_id, None)
-        logger.info(f"[CACHE] Invalidated file policy cache for user_id={user_id}")
