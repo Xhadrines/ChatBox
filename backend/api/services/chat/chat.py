@@ -4,6 +4,8 @@ import ollama
 
 from django.conf import settings
 
+from common.email.admin_logger import AdminEmailLogger
+
 from ..business.chat_plan_policy import ChatPlanPolicy
 
 from ...data_access.messages import MessagesAccessor
@@ -148,4 +150,12 @@ class ChatService:
             logger.exception(
                 f"[CHAT ERROR] UserID: {user.id} | Model: {model_to_use} | Prompt length: {len(prompt)} | Error: {e}"
             )
+
+            AdminEmailLogger.send_llm_error(
+                user=user,
+                model=model_to_use,
+                prompt=prompt,
+                exception=e,
+            )
+
             return None, f"Error during message generation: {e}"

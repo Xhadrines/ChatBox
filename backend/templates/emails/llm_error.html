@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>ChatBox LLM Error</title>
+</head>
+<body style="font-family: Arial, sans-serif; background:#f6f6f6; padding:20px;">
+
+  <div style="max-width:700px; margin:auto; background:#ffffff; padding:20px; border-radius:6px;">
+
+    <h2 style="color:#c0392b;">🚨 ChatBox – LLM ERROR</h2>
+
+    <p>
+      <span style="
+        display:inline-block;
+        padding:4px 8px;
+        background:#e74c3c;
+        color:#fff;
+        border-radius:4px;
+        font-size:12px;">
+        CRITICAL
+      </span>
+    </p>
+
+    <hr>
+
+    <h3>🧑 User</h3>
+    <ul>
+      <li><strong>ID:</strong> {{ user.id }}</li>
+      <li><strong>Username:</strong> {{ user.username }}</li>
+      <li><strong>Email:</strong> {{ user.email }}</li>
+    </ul>
+
+    <h3>🤖 Model</h3>
+    <p>{{ model }}</p>
+
+    <h3>📏 Prompt length</h3>
+    <p>{{ prompt_length }}</p>
+
+    <h3>💬 Prompt</h3>
+    <div style="
+      background:#f4f4f4;
+      padding:12px;
+      border-radius:4px;
+      font-family: monospace;
+      white-space: pre-wrap;">
+{{ prompt }}
+    </div>
+
+    <h3>🔥 Exception</h3>
+    <div style="
+      background:#2c3e50;
+      color:#ecf0f1;
+      padding:12px;
+      border-radius:4px;
+      font-family: monospace;
+      white-space: pre-wrap;">
+{{ exception }}
+    </div>
+
+    <hr>
+
+    <p style="font-size:12px; color:#999;">
+      ChatBox automated alert – {{ timestamp }}
+    </p>
+
+  </div>
+
+</body>
+</html>

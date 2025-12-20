@@ -21,6 +21,8 @@ DB_USER=[DB_USER]
 DB_PASSWORD=[DB_PASSWORD]
 DB_HOST=[DB_HOST]
 DB_PORT=[DB_PORT]
+HOST_USER=[HOST_USER]
+HOST_PASSWORD=[HOST_PASSWORD]
 ```
 
 _Note: Înlocuiește conținutul din parantezele pătrate cu valorile corespunzătoare._
